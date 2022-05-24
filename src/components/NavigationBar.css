@@ -1,0 +1,12 @@
+.cont{
+    margin-left: 0px;
+    border-color: aliceblue;
+    border-style: solid;
+}
+
+
+
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 2140px;
+    }}
