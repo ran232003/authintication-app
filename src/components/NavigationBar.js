@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./NavigationBar.css"
 const NavigationBar = (props)=>{
 
@@ -7,7 +8,7 @@ const NavigationBar = (props)=>{
         <div>
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container className="cont">
-  <Navbar.Brand >Auth-App</Navbar.Brand>
+  <Navbar.Brand as = {Link} to="/">Auth-App</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
@@ -15,8 +16,8 @@ const NavigationBar = (props)=>{
      
     </Nav>
     <Nav>
-      <Nav.Link href="#deets">SignUp</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
+      <Nav.Link as = {Link} to="/sign-up">SignUp</Nav.Link>
+      <Nav.Link eventKey={2} as = {Link} to="/login">
         Login
       </Nav.Link>
     </Nav>

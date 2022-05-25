@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './components/NavigationBar';
 import { Route, Routes } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
+import LandingPage from './landing-page/pages/LandingPage';
+import SignUp from './auth/pages/SignUp';
+import Login from './auth/pages/Login';
 
 function App() {
   return (
@@ -12,6 +14,12 @@ function App() {
       <Route path = "/" element = {<LandingPage/>}>
 
       </Route>
+      <Route exact path = "/sign-up" element = {<SignUp/>}>
+
+      </Route>
+        <Route exact path = "/login" element = {<Login/>}>
+
+        </Route>
       </Routes>
     </div>
   );
