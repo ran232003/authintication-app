@@ -1,8 +1,17 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "./BackgroundVideo.css"
+import { useNavigate } from "react-router-dom";
 const BackgroundVideo = (props)=>{
-
+    const navigate = useNavigate();
+    const handleStarted = (e)=>{
+        e.preventDefault();
+        navigate("/sign-up");
+    }
+    const handleLogin = (e)=>{
+        e.preventDefault();
+        navigate("/login");
+    }
     return(
         <div className = "hero-container">
           <video src='videos/video-1.mp4'  autoPlay loop muted />
@@ -13,12 +22,13 @@ const BackgroundVideo = (props)=>{
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          onClick={handleStarted}
         >
           GET STARTED
         </Button>
         <Button  variant="light"
           className='btns'
-          onClick={console.log('hey')}
+          onClick={handleLogin}
         >
           LOGIN <i className='far fa-play-circle' />
         </Button>
