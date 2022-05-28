@@ -1,10 +1,10 @@
 import React from "react";
 import BackgroundVideo from "../components/BackgroundVideo";
-
+import "./LandingPage.css";
 const LandingPage = (props)=>{
 
     return (
-    <div>
+    <div className="landing">
         <BackgroundVideo/>
     </div>
     )

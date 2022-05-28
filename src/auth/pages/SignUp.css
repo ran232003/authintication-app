@@ -3,8 +3,9 @@
     height: 600px;
     border-color: black;
     border-style: solid;
-    background-color: #646FD4;
+    background-color: #DBDFFD;
     margin: auto;
+  
 }
 .signup{
     
@@ -21,3 +22,21 @@
 .centerText{
     text-align: center;
 }
+.inputs{
+    overflow-y: visible;
+    height: 100%;
+}
+.buttons-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width: 760px) {
+    .btn {
+        width: 120px;
+        
+    }
+    .google{
+        width: 120px; 
+    }
+  }
