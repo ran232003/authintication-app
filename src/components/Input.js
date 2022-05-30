@@ -4,30 +4,48 @@ import { checkInput } from "../HelperFunc";
 
 const Input = (props)=>{
     const{placeHolder,type,lable,errorMessage} = props;
+    const[error,setError] = useState({
+        isValid : false,
+        countError : 0
+    })
     const[input,setInput] = useState({
        value:"",
-       valid:false,
-       count:0 
+       valid:false
     })
     const handleInput = (e)=>{
         console.log(e.target.value);
        let value = e.target.value.trim();
         const valid = checkInput(lable,value);
-       const count = 1;
+        if(valid){
+            if(error.countError > 0){
+                setError(()=>{
+                    return {isValid:false,countError:1}
+                })
+            }
+        }
+        else{
+            if(error.countError > 0){
+                setError(()=>{
+                    return {isValid:true,countError:1}
+                })
+            }
+        }
         setInput(()=>{
-            return {count,valid,value}
+            return {valid,value}
         })
     }
     const onInput = ()=>{
-        
+        setError(()=>{
+            return {...error,countError:1}
+        })
     }
-    console.log(input);
+  
     return(
         <div>
             <Form>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>{lable}</Form.Label>
-    <Form.Control type={type} placeholder={placeHolder} onChange={handleInput}  isInvalid = {!input.valid} onBlur={onInput}/>
+    <Form.Control type={type} placeholder={placeHolder} onChange={handleInput}  isInvalid = {error.isValid} onBlur={onInput}/>
    
     <Form.Control.Feedback type="invalid">
               {errorMessage}
