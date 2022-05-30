@@ -29,7 +29,7 @@ const SignUp = (props)=>{
                  <Input
                 lable = "Password"
                 type = "password"
-                placeHolder = "Password"
+                placeHolder = "Enter Password"
                 />
                 
             </div>
