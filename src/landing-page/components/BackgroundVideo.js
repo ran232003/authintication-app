@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./BackgroundVideo.css"
 import { useNavigate } from "react-router-dom";
 const BackgroundVideo = (props)=>{
+    const[user,setUser] = useState(JSON.parse(localStorage.getItem("user")))
+    
+    
     const navigate = useNavigate();
     const handleStarted = (e)=>{
+        console.log(user);
+        if(user){
+            console.log("in if",user);
+            navigate("/homepage",
+            {state: user}
+            ); 
+        }
+        else{
         e.preventDefault();
         navigate("/sign-up");
-    }
+    }}
     const handleLogin = (e)=>{
         e.preventDefault();
         navigate("/login");

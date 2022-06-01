@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Headline from "../../components/Headline";
 import Input from "../../components/Input";
@@ -7,10 +7,29 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 
 import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
 const SignUp = (props)=>{
+    const navigate = useNavigate();
+    const[signupData,setSignupData] = useState({
+        fullName:"",
+        password:"",
+        isGoogle:false,
+        email:"",
+        token:"",
+        isLoggedIn:false
+    })
     const test = '973904381117-45ognoieo8hqu6sk3us02poi78hk8mid.apps.googleusercontent.com';
 const success = (result)=>{
-    console.log(result)
+    console.log(result.googleId)
+    const obj = {fullName:result.profileObj.name,
+        password:result.profileObj.googleId,email:result.profileObj.email,
+        isGoogle:true,isLoggedIn:true}
+    console.log(obj);
+    localStorage.setItem('user', JSON.stringify(obj));
+    setSignupData(obj);
+    navigate("/homepage");
+    //localStorage.setItem("")
+
 
 }
 const faill = (result)=>{

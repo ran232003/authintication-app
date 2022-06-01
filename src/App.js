@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import LandingPage from './landing-page/pages/LandingPage';
 import SignUp from './auth/pages/SignUp';
 import Login from './auth/pages/Login';
+import HomePage from './homepage/pages/HomePage';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
 
       </Route>
         <Route exact path = "/login" element = {<Login/>}>
+
+        </Route>
+        <Route exact path = "/homepage" element = {<HomePage/>}>
 
         </Route>
       </Routes>
