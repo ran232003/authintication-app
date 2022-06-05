@@ -8,6 +8,8 @@ import { gapi } from 'gapi-script';
 
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userAction } from "../../store/userSlice";
 const SignUp = (props)=>{
     const navigate = useNavigate();
     const[signupData,setSignupData] = useState({
@@ -16,20 +18,25 @@ const SignUp = (props)=>{
         isGoogle:false,
         email:"",
         token:"",
-        isLoggedIn:false
+        isLoggedIn:false,
+        isSignUp:false
     })
+    const dispatch = useDispatch();
     const test = '973904381117-45ognoieo8hqu6sk3us02poi78hk8mid.apps.googleusercontent.com';
 const success = (result)=>{
     console.log(result.googleId)
     const obj = {fullName:result.profileObj.name,
         password:result.profileObj.googleId,email:result.profileObj.email,
-        isGoogle:true,isLoggedIn:true}
+        isGoogle:true,isLoggedIn:true,isSignUp:true}
     console.log(obj);
     localStorage.setItem('user', JSON.stringify(obj));
     setSignupData(obj);
-    navigate("/homepage");
+    navigate("/homepage",{
+        state:obj
+    });
     //localStorage.setItem("")
-
+    dispatch(userAction.setUser(obj))
+    dispatch(userAction.loogedIn(true))
 
 }
 const faill = (result)=>{
